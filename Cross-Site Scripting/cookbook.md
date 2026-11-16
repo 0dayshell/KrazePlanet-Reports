@@ -1,8 +1,5 @@
 ## Reflected XSS - Multi-Parameter Script Filter Evasion
 
-## Title
-REFLECTED XSS IN SEARCH PARAMETER
-
 ## Description
 **Affected URL:** `https://feedback.pwnedbox.site/`
 
