@@ -24,7 +24,7 @@ Step 1: Enter a harmless test string such as test and press Enter.
 
 Observe that the URL changes to https://tutorialrepublic.pwnedbox.site/?q=test and the search term is reflected in the page.
 
-Step 2: Modify the q parameter to contain the following payload: <script>alert(1)</script>
+Step 2: Modify the q parameter to contain the following payload: <script>alert(1)</script> and submit the request.
 
 <img width="746" height="254" alt="image" src="https://github.com/user-attachments/assets/96272a18-7cc5-424c-921c-7f0d9e6a56fe" />
 
