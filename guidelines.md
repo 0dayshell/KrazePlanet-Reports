@@ -1,5 +1,4 @@
-## Title
-Reflected XSS in Search Functionality of Guidelines
+## Reflected XSS in Search Functionality of Guidelines
 
 ## Description
 **Affected URL:** `https://guidelines.pwnedbox.site/index.php`
