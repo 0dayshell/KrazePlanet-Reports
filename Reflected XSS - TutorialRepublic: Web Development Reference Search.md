@@ -37,18 +37,18 @@ The payload is returned unsanitized in the response and executed by the browser,
 ## Impact
 An attacker could craft a malicious link containing a JavaScript payload and deliver it to victims through phishing emails, messages, or other websites. When a victim opens the link, the script runs in their browser under the application’s origin. Potential consequences include:
 
-• Session hijacking: stealing session cookies or tokens not protected by the HttpOnly flag.
-• Account takeover: performing actions on behalf of the victim using their authenticated session.
-• Phishing and credential theft: injecting fake login forms or content into the trusted page.
-• Malicious redirects: sending users to attacker-controlled sites.
-• Page defacement and data exposure: modifying page content or reading sensitive data in the DOM.
+- Session hijacking: stealing session cookies or tokens not protected by the HttpOnly flag.
+- Account takeover: performing actions on behalf of the victim using their authenticated session.
+- Phishing and credential theft: injecting fake login forms or content into the trusted page.
+- Malicious redirects: sending users to attacker-controlled sites.
+- Page defacement and data exposure: modifying page content or reading sensitive data in the DOM.
 
 Any user tricked into clicking the crafted link is affected, including administrators if they are targeted.
 
 ## Remediation
-• Output encoding: HTML-encode all user-controlled data (<, >, ", ', &) before rendering it, and use the templating engine’s auto-escaping.
-• Input validation: Validate the q parameter against an allowlist of expected characters and length on the server side.
-• Avoid unsafe DOM sinks: If handled client-side, use textContent instead of innerHTML or document.write.
-• Content Security Policy (CSP): Disallow inline scripts (e.g., script-src 'self') to reduce the impact of any injection.
-• Cookie hardening: Set HttpOnly, Secure, and SameSite attributes on session cookies.
-• Security testing: Include XSS checks in code review and automated testing, and use a trusted sanitization library wherever HTML input must be allowed.
+- Output encoding: HTML-encode all user-controlled data (<, >, ", ', &) before rendering it, and use the templating engine’s auto-escaping.
+- Input validation: Validate the q parameter against an allowlist of expected characters and length on the server side.
+- Avoid unsafe DOM sinks: If handled client-side, use textContent instead of innerHTML or document.write.
+- Content Security Policy (CSP): Disallow inline scripts (e.g., script-src 'self') to reduce the impact of any injection.
+- Cookie hardening: Set HttpOnly, Secure, and SameSite attributes on session cookies.
+- Security testing: Include XSS checks in code review and automated testing, and use a trusted sanitization library wherever HTML input must be allowed.
