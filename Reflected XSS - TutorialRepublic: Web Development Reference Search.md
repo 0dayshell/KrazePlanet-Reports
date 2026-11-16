@@ -19,10 +19,13 @@ This is a security issue because the injected script runs with the same privileg
 
 ## POC (Proof of Concept)
 Step 1: Enter a harmless test string such as test and press Enter.
+
 <img width="893" height="368" alt="image" src="https://github.com/user-attachments/assets/50de9d68-957f-452c-afcc-801216e72f02" />
+
 Observe that the URL changes to https://tutorialrepublic.pwnedbox.site/?q=test and the search term is reflected in the page.
 
 Step 2: Modify the q parameter to contain the following payload: <script>alert(1)</script>
+
 <img width="746" height="254" alt="image" src="https://github.com/user-attachments/assets/96272a18-7cc5-424c-921c-7f0d9e6a56fe" />
 
 GET /?q=<script>alert(1)</script> HTTP/1.1
