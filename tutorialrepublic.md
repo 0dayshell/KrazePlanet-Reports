@@ -1,5 +1,4 @@
-## Title
-Reflected XSS in Search Parameter
+## Reflected XSS in Search Parameter
 
 ## Description
 Affected URL: https://tutorialrepublic.pwnedbox.site/
