@@ -21,15 +21,17 @@ This is a security issue because the injected script runs with the same privileg
 
 Step 1: Enter the payload `navi'"<>` into both fields and submit to confirm the input is reflected unsanitized.
 
-<img width="1920" height="990" alt="image" src="1794821080769_image.png" />
+<img width="1522" height="784" alt="image" src="https://github.com/user-attachments/assets/8fef690e-11ce-461b-9dbb-0a8df3dd4c90" />
+
 
 Step 2: Modify the payload to `navi<script>alert(1)</script>` and submit. The rendered page shows `navi<>alert(1)</>` instead of the full tag.
 
-<img width="1920" height="946" alt="image" src="1794821129390_image.png" />
+<img width="1568" height="761" alt="image" src="https://github.com/user-attachments/assets/96a3f245-bd74-4e0d-bc9f-2ec621939d38" />
+
 
 Inspecting the page source confirms the literal string `script` was stripped from the input, while the rest of the payload (`<`, `>`, `alert(1)`) passed through unfiltered:
 
-<img width="1583" height="289" alt="image" src="1794821251493_image.png" />
+<img width="1568" height="286" alt="image" src="https://github.com/user-attachments/assets/c28e2d2f-c075-4ede-ad02-0470df58d863" />
 
 Step 3: On the First Name field, submit the payload `navi"><Script>alert(1)</Script>`, using mixed case to bypass the case-sensitive `script` filter.
 
