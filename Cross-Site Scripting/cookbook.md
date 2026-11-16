@@ -1,17 +1,17 @@
 ## Reflected XSS - Multi-Parameter Script Filter Evasion
 
 ## Description
-**Affected URL:** `https://feedback.pwnedbox.site/`
+**Affected URL:** `https://cookbook.pwnedbox.site`
 
 A reflected Cross-Site Scripting (XSS) vulnerability exists in the GET Parameter Reflection feature of the application. User input submitted through the `fname` and `lname` URL parameters is reflected back into the page inside the `value` attribute of their respective `<input>` elements. The application attempts to filter the input by stripping the literal string `script`, but the filter is case-sensitive and only strips the lowercase form, so it does not account for mixed-case variations. By using `<Script>` instead of `<script>`, the filter is bypassed, allowing the tag to break out of the attribute context and execute as HTML.
 
 This is a security issue because the injected script runs with the same privileges as the legitimate site's own code, and a case-based filter bypass shows the sanitization is insufficient. The payload is delivered through a crafted link, so any user who opens that link can be targeted.
 
 ## Steps to Reproduce
-1. Open the application in a browser: `https://feedback.pwnedbox.site/`
+1. Open the application in a browser: `https://cookbook.pwnedbox.site/`
 2. Locate the "First Name" and "Last Name" input fields.
-3. Enter the payload `navi'"<>` into both fields and submit. The URL becomes `https://feedback.pwnedbox.site/?fname=navi%27"<>&lname=navi%27"<>`, and the payload is reflected on the page, confirming no input sanitization.
-4. Modify the payload to `navi<script>alert(1)</script>` in both fields and submit. The URL becomes `https://feedback.pwnedbox.site/?fname=navi<script>alert(1)<%2Fscript>&lname=navi<script>alert(1)<%2Fscript>`.
+3. Enter the payload `navi'"<>` into both fields and submit. The URL becomes `https://cookbook.pwnedbox.site/?fname=navi%27"<>&lname=navi%27"<>`, and the payload is reflected on the page, confirming no input sanitization.
+4. Modify the payload to `navi<script>alert(1)</script>` in both fields and submit. The URL becomes `https://cookbook.pwnedbox.site/?fname=navi<script>alert(1)<%2Fscript>&lname=navi<script>alert(1)<%2Fscript>`.
 5. Observe that the page displays `navi<>alert(1)</>` instead of an alert popup, and inspecting the source confirms the literal string `script` has been stripped from the input.
 6. This shows the filter is case-sensitive and only removes the lowercase `script` string, so a mixed-case tag is not filtered.
 7. In both the First Name and Last Name fields, submit the payload `navi"><Script>alert(1)</Script>` to break out of the attribute and bypass the case-sensitive filter.
