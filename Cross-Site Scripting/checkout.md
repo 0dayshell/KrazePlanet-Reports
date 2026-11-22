@@ -26,6 +26,23 @@ Step 2: Enumerate parameters and isolate `cat`, then submit `navi'"<>` via `http
 <img width="959" height="496" alt="image" src="https://github.com/user-attachments/assets/f590e160-fa39-4643-9f5c-738566252b1b" />
 
 
-Step 3: Submit the payload via the `cat` parameter:
+Step 3: Submit the payload via the `cat` parameter: navi'"<><sCrIpt>\u0063onfirm(1)</sCrIpt>
 
 <img width="953" height="470" alt="image" src="https://github.com/user-attachments/assets/efd97d9f-5e8f-49c0-99f3-b0c0d4c4d6c5" />
+
+
+**Result:** The `cat` parameter is reflected without sanitization, and the case-sensitive `script` filter does not block the mixed-case `sCrIpt` tag, executing `confirm(1)` and confirming reflected XSS.
+
+## Impact
+1. Attacker-controlled script executes in the victim's browser session.
+2. Session cookies/tokens can be stolen if not `HttpOnly`.
+3. Victim accounts can be taken over via session hijacking.
+4. Fake login forms can be injected to phish credentials.
+5. Victims can be redirected to malicious or attacker-controlled sites.
+
+## Remediation
+1. Apply output encoding to the `cat` parameter wherever it is reflected.
+2. Validate and sanitize all parameters consistently, not just the ones tied to visible form fields.
+3. Remove or disable undocumented/hidden parameters that aren't needed.
+4. Do not rely on case-sensitive keyword blacklisting; use proper encoding instead.
+5. Set `HttpOnly`, `Secure`, and `SameSite` flags on session cookies.
