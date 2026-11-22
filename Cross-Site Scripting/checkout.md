@@ -23,22 +23,9 @@ Step 1: Submit `navi'"<>` via `fname`/`lname` to confirm those fields are filter
 
 Step 2: Enumerate parameters and isolate `cat`, then submit `navi'"<>` via `https://checkout.pwnedbox.site/?cat=` to confirm it is reflected unsanitized.
 
-<img width="571" height="466" alt="image" src="https://github.com/user-attachments/assets/2fa452ad-22e1-4d17-9db8-70232f3f90a5" />
-
 <img width="959" height="496" alt="image" src="https://github.com/user-attachments/assets/f590e160-fa39-4643-9f5c-738566252b1b" />
 
 
 Step 3: Submit the payload via the `cat` parameter:
-
-<img width="958" height="492" alt="image" src="https://github.com/user-attachments/assets/d778f7d8-9dce-4063-8cc4-e14afa1d967d" />
-
-
-
-<img width="571" height="466" alt="image" src="https://github.com/user-attachments/assets/2fa452ad-22e1-4d17-9db8-70232f3f90a5" />
-
-<img width="959" height="496" alt="image" src="https://github.com/user-attachments/assets/f590e160-fa39-4643-9f5c-738566252b1b" />
-
-<img width="958" height="492" alt="image" src="https://github.com/user-attachments/assets/d778f7d8-9dce-4063-8cc4-e14afa1d967d" />
-
 
 <img width="953" height="470" alt="image" src="https://github.com/user-attachments/assets/efd97d9f-5e8f-49c0-99f3-b0c0d4c4d6c5" />
