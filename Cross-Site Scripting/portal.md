@@ -21,7 +21,7 @@ Step 1: Submit `navi'"<>` via the discovered `cat` parameter to confirm it is re
 
 <img width="959" height="257" alt="image" src="https://github.com/user-attachments/assets/405daaac-8acf-417b-ac7e-28920bbdb433" />
 
-Step 2: Submit the payload via the `cat` parameter: navi'"<><ScRiPt>\u0063onfirm("navi35")</ScRiPt>
+Step 2: Submit the payload via the `cat` parameter: navi'"<><ScRiPt>\u0063onfirm("navi")</ScRiPt>
 
 <img width="959" height="319" alt="image" src="https://github.com/user-attachments/assets/7a8b36c5-9ddf-46c5-acc5-b484644e66d9" />
 
