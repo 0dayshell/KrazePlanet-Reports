@@ -24,17 +24,29 @@ Step 1: Submit `navi'"<>` via `fname`/`lname` to confirm those fields are filter
 
 Step 2: Submit `navi'"<>` via the discovered `cat` parameter to confirm it is reflected unsanitized.
 
-
+<img width="959" height="214" alt="image" src="https://github.com/user-attachments/assets/9a97916b-9854-42dd-a41b-7e38eff6c8d5" />
 
 Step 3: Submit `navi'"<><ScRiPt>confirm(1)</ScRiPt>` via `cat` and confirm the keyword `confirm` is blocked.
 
-**[Insert screenshot here]**
-
-Step 4: Submit the payload via the `cat` parameter:
-
-
-
 <img width="959" height="212" alt="image" src="https://github.com/user-attachments/assets/1e7755d3-58fd-4e36-978e-ab0b90acdc13" />
 
+Step 4: Submit the payload via the `cat` parameter: navi'"<><ScRiPt>\u0063onfirm(1)</ScRiPt>
 
 <img width="959" height="331" alt="image" src="https://github.com/user-attachments/assets/b6afd9c6-1914-41a2-9a0a-6cd746a16a25" />
+
+
+**Result:** The `confirm` keyword filter does not account for the JavaScript Unicode escape sequence `\u0063onfirm`, and the payload executes, displaying a `confirm(1)` dialog, confirming reflected XSS via the `cat` parameter.
+
+## Impact
+1. Attacker-controlled script executes in the victim's browser session.
+2. Session cookies/tokens can be stolen if not `HttpOnly`.
+3. Victim accounts can be taken over via session hijacking.
+4. Fake login forms can be injected to phish credentials.
+5. Victims can be redirected to malicious or attacker-controlled sites.
+
+## Remediation
+1. Apply output encoding to the `cat` parameter wherever it is reflected.
+2. Do not rely on keyword blacklisting (e.g., `confirm`); it can be bypassed via Unicode escapes, string concatenation, or alternate functions.
+3. Validate and sanitize all parameters consistently, not just the ones tied to visible form fields.
+4. Remove or disable undocumented/hidden parameters that aren't needed.
+5. Set `HttpOnly`, `Secure`, and `SameSite` flags on session cookies.
