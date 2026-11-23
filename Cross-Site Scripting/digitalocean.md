@@ -22,6 +22,8 @@ This is a security issue because the injected script is persisted in the ticket 
 
 Step 1: Submit a ticket with the payload `navi1'"<><ScRipT>confirm(1)</ScRipT>` in the Subject and Description fields.
 
+<img width="932" height="524" alt="image" src="https://github.com/user-attachments/assets/cb7985e7-dc72-48c7-834b-a5fa34b94927" />
+
 <img width="959" height="515" alt="image" src="https://github.com/user-attachments/assets/c7553124-9453-4f8f-9014-e11e5c454828" />
 
 Step 2: Visit `https://digitalocean.pwnedbox.site/index.php?view=tickets` and observe the stored payload executes automatically.
