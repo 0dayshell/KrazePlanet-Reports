@@ -28,7 +28,8 @@ Step 1: Submit a report with the payload `navi1'"<><ScRipT>confirm("navi")</ScRi
 
 Step 2: Open the submitted report from the reports list and observe the stored payload executes automatically.
 
-<img width="937" height="531" alt="image" src="https://github.com/user-attachments/assets/7b01ad19-9794-4bef-a5a8-76b6f1f842da" />
+<img width="953" height="430" alt="image" src="https://github.com/user-attachments/assets/65e08a47-1d88-45a1-a8e2-136148b29dbc" />
+
 
 <img width="957" height="430" alt="image" src="https://github.com/user-attachments/assets/b94c13ca-0a62-4a70-951d-fa348c8a93db" />
 
