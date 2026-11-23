@@ -9,22 +9,24 @@ This is a security issue because the injected payloads are persisted in the acco
 
 ## Steps to Reproduce
 1. Register an account at `https://articles.pwnedbox.site/index.php` using the payload `navi1'"<ImG sRC=x onError confirm(1)>` as the username, and log in.
-2. Navigate to "Events & Polls" and click "Create Interactive Poll".
+2. Navigate to "Interactive Poll".
 3. Fill in the Poll Question with `navi1'"<ScRiPT>confirm("navi1")</ScRiPT>`, the Poll Description with `navi1'"<ScRiPT>confirm("navi1")</ScRiPT>`, and each Poll Option with a distinct payload — `navi2'"<ScRiPT>confirm("navi2")</ScRiPT>`, `navi3'"<ScRiPT>confirm("navi3")</ScRiPT>`, `navi4'"<ScRiPT>confirm("navi4")</ScRiPT>`, `navi5'"<ScRiPT>confirm("navi5")</ScRiPT>` — then click "Publish Poll".
 4. Observe that the username payload is reflected unencoded in the top-right account menu, rendering a broken image with an `onerror` handler.
 5. Visit the site (or have another user visit it) and observe that the `confirm(1)` dialog fires automatically from the account menu, followed by each distinct `confirm("naviX")` dialog from the Poll Question, Description, and Options fields firing in sequence, confirming multiple stored XSS injection points execute for any visitor.
 
 ## POC
 
-Step 1: Create a poll using distinct payloads in the Question, Description, and Option fields and submit the poll.
+Step 1: Navigate to "Interactive Poll" and create a poll using distinct payloads in the Question, Description, and Option fields.
 
-<img width="935" height="532" alt="image" src="https://github.com/user-attachments/assets/5bec5895-6815-4513-bd8f-3d8d14f2c48b" />
+<img width="935" height="532" alt="image" src="https://github.com/user-attachments/assets/5bec5895-6815-4513-bd8f-3d8d14f2c48b" />  
 
-<img width="950" height="491" alt="image" src="https://github.com/user-attachments/assets/48fd1811-7752-4d04-abee-a24857e2aa2f" />
+<img width="950" height="491" alt="image" src="https://github.com/user-attachments/assets/48fd1811-7752-4d04-abee-a24857e2aa2f" />  
 
-<img width="957" height="520" alt="image" src="https://github.com/user-attachments/assets/b4706bb1-321b-4d66-b067-10fb4cf8d344" />
+Step 2: Submit the poll. Soon after the popups show up on the page.
 
-<img width="959" height="524" alt="image" src="https://github.com/user-attachments/assets/62f16a54-2a97-4908-b09f-814ea1d67482" />
+<img width="957" height="520" alt="image" src="https://github.com/user-attachments/assets/b4706bb1-321b-4d66-b067-10fb4cf8d344" />  
+
+<img width="959" height="524" alt="image" src="https://github.com/user-attachments/assets/62f16a54-2a97-4908-b09f-814ea1d67482" />  
 
 **Result:** The username is reflected unencoded in the navigation bar and in the "Created by" line of the published poll, firing a `confirm(1)` dialog automatically via the broken `<img onerror>` tag. Additionally, each distinct payload entered in the Poll Question, Description, and Options fields (`navi1` through `navi5`) fires its own `confirm("naviX")` dialog in sequence when any visitor loads the polls page, confirming multiple stored XSS injection points on the same page.
 
